@@ -102,7 +102,7 @@ def orderdetails(request):
 
             email_subject = 'Order Placed'
             recipient_list = [customer.email]
-            from_email = 'shahwaizali189@gmail.com'
+            from_email = settings.EMAIL_HOST_USER
 
             send_mail(
                 email_subject,
@@ -113,7 +113,7 @@ def orderdetails(request):
                 fail_silently=False
             )
 
-            owner_email = "shahwaizmughal02@gmail.com"
+            owner_email = settings.EMAIL_HOST_USER
             send_mail(
                 "New Order Placed",
                 f"New order placed with details: {customer.first_name},{customer.last_name},\n,{address}, {phone}, {products}",  

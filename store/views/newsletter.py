@@ -19,7 +19,7 @@ def Newsletter(request):
 
             email_subject = 'Thank you for Subscribing'
             recipient_list = [subscriber.email]
-            from_email = 'shahwaizmughal02@gmail.com'
+            from_email = settings.EMAIL_HOST_USER
 
             send_mail(
                 email_subject,

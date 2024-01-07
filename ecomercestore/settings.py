@@ -95,8 +95,12 @@ WSGI_APPLICATION = 'ecomercestore.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'GlowupSparkle',
+        'USER': 'glowupsparkle',
+        'PASSWORD': 'hokuspokus',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
@@ -144,8 +148,8 @@ MEDIA_ROOT = BASE_DIR
 
 # settings.py
 
-STRIPE_PUBLIC_KEY = 'pk_test_51ORcH4L6KLdg6T2ndLB0iextSvsGZfIESd1eagjIkpram3tewxvR67pJU7BFbCWZu6R9Nd5QVEGmmuSdjerenjNL00OEamGWkn'
-STRIPE_SECRET_KEY = 'sk_test_51ORcH4L6KLdg6T2nqmRzBBb2Pva57ZeG96ImKgzSYsRHsrcCtlWhLDbdlomA5EEzJVGsU8JgX2dXXEoHiWymUJtR008JVQ9KV0'
+STRIPE_PUBLIC_KEY = 'pk_test_51OLt1nGOc784mioAOheKKqxTAyx9N7yRSFrvTgX8zjeZQsffq92HsSsGOn0RNxwN5jRkzL9sjIPQJfPhNimcahi5007reIN2in'
+STRIPE_SECRET_KEY = 'sk_test_51OLt1nGOc784mioA8Go0G94PUKNTXvzaJc3gZtKhtHNnnTDBaGoyDBnf1v62Lb1i9zlswSuF7ykuwzVfsq2O2Jc500L0VOEV77'
 
 
 # settings.py
@@ -158,4 +162,4 @@ EMAIL_PORT = 587  # For TLS
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False  # Set to False for TLS
 EMAIL_HOST_USER = 'glowupsparkle@gmail.com'  # Your Gmail email address
-EMAIL_HOST_PASSWORD = 'Hokuspokus-1984!!'  # Your Gmail password or app-specific password
+EMAIL_HOST_PASSWORD = 'dywgksdgvszmjfcj'  # Your Gmail password or app-specific password
