@@ -10,6 +10,12 @@ class AdminProduct(admin.ModelAdmin):
     list_display = ['name', 'category','price', 'description']
     list_filter = ('price', 'category')  
 
+class CustomerProduct(admin.ModelAdmin):
+    list_display = ['first_name', 'last_name','phone', 'email']
+    list_filter = ('email', 'last_name')  
+
+
+
 
 
 
