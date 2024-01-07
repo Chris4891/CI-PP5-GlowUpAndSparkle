@@ -18,4 +18,13 @@ class Migration(migrations.Migration):
                 ('email', models.EmailField(max_length=254, unique=True)),
             ],
         ),
+        migrations.CreateModel(
+            name='EmailTemplate',
+            fields=[
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('subject', models.CharField(max_length=255)),
+                ('message', ckeditor.fields.RichTextField()),
+                ('recipients', models.ManyToManyField(to='store.subscriber')),
+            ],
+        ),
     ]
