@@ -148,4 +148,14 @@ STRIPE_PUBLIC_KEY = 'pk_test_51ORcH4L6KLdg6T2ndLB0iextSvsGZfIESd1eagjIkpram3tewx
 STRIPE_SECRET_KEY = 'sk_test_51ORcH4L6KLdg6T2nqmRzBBb2Pva57ZeG96ImKgzSYsRHsrcCtlWhLDbdlomA5EEzJVGsU8JgX2dXXEoHiWymUJtR008JVQ9KV0'
 
 
+# settings.py
+# settings.py
 
+# Email configuration
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587  # For TLS
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False  # Set to False for TLS
+EMAIL_HOST_USER = 'glowupsparkle@gmail.com'  # Your Gmail email address
+EMAIL_HOST_PASSWORD = 'Hokuspokus-1984!!'  # Your Gmail password or app-specific password
