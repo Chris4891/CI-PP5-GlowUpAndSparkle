@@ -16,6 +16,13 @@ class CustomerProduct(admin.ModelAdmin):
 
 
 
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ['name']
+
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ('product', 'customer', 'quantity', 'price', 'date', 'status') 
+    list_filter = ('status', 'date')  
+
 
 
 
