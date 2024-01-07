@@ -1,0 +1,75 @@
+
+  <!-- Footer template -->
+<div class="container-fluid footer">
+    <!-- Other footer content -->
+    <div class="subscribe container ">
+        <div class="row">
+            <div class="col-md-6 subscribe1 ">
+                <h3>SUBSCRIBE TO GET </h3>
+                <h3>OUR LATEST UPDATES</h3>
+            </div>
+            <div class="col-md-6 subscribe1 ">
+                <form id="newsletter-form"  method="POST">
+                    {% csrf_token %}
+                    <div style="width:460px" class="input-box">
+                        <input type="email" id="email" name="email" placeholder="Your email address" class="form-control">
+                        <button type="submit" id="email-btn">Sign Up</button>
+                    </div>
+                </form>
+                <!-- Add a container for displaying success or error messages -->
+                <div id="newsletter-messages"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Other footer content -->
+
+        <div class="container">
+        <div class="row footer2">
+            <div class="col-md-3">
+                <h2>Gear Up & Glow </h2>
+                <br>
+                <ul class="list-inline social-icons">
+                    <li class="list-inline-item"><a href="https://www.facebook.com" target="_blank"><i class="fa fa-brands fa-facebook"></i></a></li>
+                    <li class="list-inline-item"><a href="https://twitter.com"target="_blank"><i class="fa fa-brands fa-x-twitter"></i></a></li>
+                    <li class="list-inline-item"><a href="https://instagram.com"target="_blank"><i class="fa fa-brands fa-instagram"></i></a></li>
+                    <li class="list-inline-item"><a href="https://youtube.com"target="_blank"><i class="fa fa-brands fa-youtube"></i></a></li>
+
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h2>NAVIGATIONS</h2>
+                <ul class="list">
+                    <li class="list-item"><a href="/">HOME</a></li>
+                    <li class="list-item"><a href="/store">STORE</a></li>
+                    <li class="list-item"><a href="/about">ABOUT</a></li>
+                    <li class="list-item"><a href="/contact">CONTACT</a></li>
+                    <li class="list-item"><a href="/cart">CART<i class="fa fa-shopping-cart"></i></a></li>
+
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h3>CONTACT</h3>
+                <ul class="list">
+                    <li class="list-item"><a href="tel:+353873671286"><i class="fa fa-phone">&nbsp</i>+9312-5800367</a></li>
+                    <li class="list-item"><a href="tel:+353873671286"><i class="fa fa-phone">&nbsp</i>+9334-5858567</a></li>
+                    <li class="list-item"><a href="mailto:glowupsparkle@gmail.com"><i class="fa fa-envelope">&nbsp</i>glowupsparkle@gmail.com</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h3>ADDRESS</h3>
+                <ul class="list">
+                    <li class="list-item"><a href="https://maps.app.goo.gl/d15DomrboBvvgqpt5"><i class="fa fa-map-marker">&nbsp</i>Block 1, Blackrock Business Park, Carysfort Ave, Newtown Blackrock, Blackrock, Co. Dublin, Ireland</a></li>
+                    <iframe src="https://www.google.com/maps/place/22+Frascati+Park,+Blackrock,+Co.+Dublin,+A94+F2N2,+Ireland/@53.2982013,-6.1812255,17z/data=!4m14!1m7!3m6!1s0x48670e99733f3617:0x7ff7202fe3dea603!2sCode+Institute!8m2!3d53.2981981!4d-6.1786506!16s%2Fg%2F11byts9r_k!3m5!1s0x486708c39247a36d:0xa2ae3a8c898d8317!8m2!3d53.2999829!4d-6.1827793!16s%2Fg%2F11c23b1l07?entry=ttu" width="300" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </ul>
+            </div>
+            
+
+        </div>
+        <div class="text footer-copyright">
+            © 2024 Copyrights by Chris 
+            <br><a href="/privacypolicy">Privacy Policy</a>
+        </div>
+    </div>
+    
+    </div>
+
