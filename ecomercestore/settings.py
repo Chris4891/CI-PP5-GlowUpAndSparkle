@@ -142,4 +142,10 @@ MEDIA_URL = "/images/"
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 MEDIA_ROOT = BASE_DIR
 
+# settings.py
+
+STRIPE_PUBLIC_KEY = 'pk_test_51ORcH4L6KLdg6T2ndLB0iextSvsGZfIESd1eagjIkpram3tewxvR67pJU7BFbCWZu6R9Nd5QVEGmmuSdjerenjNL00OEamGWkn'
+STRIPE_SECRET_KEY = 'sk_test_51ORcH4L6KLdg6T2nqmRzBBb2Pva57ZeG96ImKgzSYsRHsrcCtlWhLDbdlomA5EEzJVGsU8JgX2dXXEoHiWymUJtR008JVQ9KV0'
+
+
 
