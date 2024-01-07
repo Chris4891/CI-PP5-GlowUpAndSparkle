@@ -22,7 +22,16 @@ class CategoryAdmin(admin.ModelAdmin):
 class OrderAdmin(admin.ModelAdmin):
     list_display = ('product', 'customer', 'quantity', 'price', 'date', 'status') 
     list_filter = ('status', 'date')  
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ['first_name', 'last_name','subject','message', 'email']
 
+admin.site.register(Products,AdminProduct)
+admin.site.register(Category)
+admin.site.register(Customer,CustomerProduct)
+admin.site.register(Order,OrderAdmin)
+admin.site.register(ContactMessage,ContactAdmin)
+
+admin.site.register(Subscriber)
 
 
 
