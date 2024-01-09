@@ -27,7 +27,7 @@
 						<a href="{% url 'productdetails' pk=product.pk %}"><img class=" img-responsive card-img-top" src="{{product.image.url}}" alt="Card image cap"></a>
 					<div class="card-body">
 						<h2 class="card-title">{{product.name}}</h2>
-						<h4 class="card-text"><b>{{product.price|currency}}</b></h4>
+						<h4 class="card-text"><b>{{product.price}} €</b></h4>
 						<!-- {{product | is_in_cart:request.session.cart }} -->
 					</div>
 				<div class="card-footer " style="font-size:15px">

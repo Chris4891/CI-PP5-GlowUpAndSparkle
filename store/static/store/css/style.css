@@ -12,7 +12,9 @@
 	}
 	@media (max-width: 600px) {
 		body{
-			/* width: fit-content; */
+			/* max-width: fit-content ; */
+			min-width: auto;
+			
 		}
 		.centered h1{
 			font-size: 30px !important;

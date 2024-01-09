@@ -28,7 +28,7 @@
                 </div>
                 <div class="col-md-6 ">
                     <h2>{{ product.name }}</h2>
-                    <h4>from {{ product.price|currency }}</h4>
+                    <h4>from {{ product.price }} €</h4>
                     <h3 class="black">{{ product.description }}</h3>
                     {% if product|is_in_cart:request.session.cart %}
                     <div class="row cartbtn" style="display:flex; padding:15px;">

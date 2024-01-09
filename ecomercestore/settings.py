@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
+import django_heroku
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,25 +28,8 @@ SECRET_KEY = '-95t%=#4o3@l-(-%ok9*h%n3!0(sdchjn%+_$5#umaj-!3bg*7'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
-CKEDITOR_CONFIGS = {
-    'default': {
-        'toolbar': 'Full',
-        'toolbar_Custom': [
-            ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript'],
-            ['NumberedList', 'BulletedList', 'Blockquote', 'HorizontalRule'],
-            ['Format', 'Styles', 'RemoveFormat'],
-            ['Link', 'Unlink', 'Image', 'Table'],
-            ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord'],
-            ['Undo', 'Redo', 'Find', 'SelectAll', 'Scayt'],
-            ['Maximize', 'Source'],
-        ],
-        'extraPlugins': 'image2,uploadimage',
-        'image2_alignClasses': ['image-align-left', 'image-align-center', 'image-align-right'],
-        'removeDialogTabs': 'image:advanced;link:advanced',
-    }
-}
 # Application definition
 
 INSTALLED_APPS = [
@@ -55,8 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'store',
-    'ckeditor',
-]
+    ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -89,20 +73,31 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'ecomercestore.wsgi.application'
 
+# settings.py
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
+...
+DATABASES = {'default': dj_database_url.config()}
 
+from decouple import config
+...
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'GlowupSparkle',
-        'USER': 'glowupsparkle',
-        'PASSWORD': 'hokuspokus',
-        'HOST': 'localhost',
-        'PORT': '',
+    "default": {
+        # default sqlite3 settings
+        #  "ENGINE": "django.db.backends.sqlite3",
+        # "NAME": os.path.join(BASE_DIR, 'db.sqlite3')
+        # Postgresql settings
+       'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd3cgnfjld6uli2',
+        'USER': 'hbqfucyeulbyfk',
+        'PASSWORD': 'd3e82675fb53c0e8381ca6be23883747c655bcaccb8c89639a5dea7a1546d39a',
+        'HOST': 'ec2-52-1-92-133.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
+
 
 
 # Password validation
@@ -145,7 +140,7 @@ STATIC_URL = '/static/'
 MEDIA_URL = "/images/"
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 MEDIA_ROOT = BASE_DIR
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # settings.py
 
 STRIPE_PUBLIC_KEY = 'pk_test_51OLt1nGOc784mioAOheKKqxTAyx9N7yRSFrvTgX8zjeZQsffq92HsSsGOn0RNxwN5jRkzL9sjIPQJfPhNimcahi5007reIN2in'
@@ -162,4 +157,6 @@ EMAIL_PORT = 587  # For TLS
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False  # Set to False for TLS
 EMAIL_HOST_USER = 'glowupsparkle@gmail.com'  # Your Gmail email address
-EMAIL_HOST_PASSWORD = 'dywgksdgvszmjfcj'  # Your Gmail password or app-specific password
+EMAIL_HOST_PASSWORD = 'ajakumtrcqflqrrx'  # Your Gmail password or app-specific password
+
+django_heroku.settings(locals())

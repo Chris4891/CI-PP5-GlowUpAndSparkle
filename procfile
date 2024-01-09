@@ -1,1 +1,3 @@
-web: gunicorn store.wsgi --log-file -
+web: gunicorn ecomercestore.wsgi:application --log-file -
+python manage.py collectstatic --noinput
+manage.py migrate

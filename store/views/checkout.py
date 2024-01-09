@@ -21,7 +21,7 @@ def create_checkout_session(request):
         # Create a line item for the Stripe session
         line_item = {
             'price_data': {
-                'currency': 'usd',
+                'currency': 'eur',
                 'product_data': {
                     'name': product.name,
                     
