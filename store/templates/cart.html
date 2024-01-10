@@ -3,6 +3,7 @@
 {% load cart %}
 
 {% block header %}
+
 <div class="shop" style="padding:0px;">
     <div class="headerpad container ">
         {% include "navbar.html" %}
@@ -11,6 +12,9 @@
 
 {% block content %}
 <div class="container shop-b">
+    <div id="custom-alert" class="alert " role="alert" style="display: none;">
+        ITEM ADDED/REMOVED FROM CART!
+    </div>
     <div class="border fadeInleft rounded p-4 m-4">
         <h2>Your Cart <i class="fa  orange fa-shopping-cart"></i></h2>
         <hr />
@@ -35,7 +39,18 @@
                     </td>
                     <td>{{ product.name }}</td>
                     <td>{{ product.price }}€</td>
-                    <td>{{ product|cart_quantity:request.session.cart }}</td>
+                    <td><form action="/cart/" class="col " method="post">
+                        {% csrf_token %}
+                        <input hidden type="text" name='product' value='{{product.id}}'>
+                        <input hidden type="text" name='remove' value='True'>
+                        <input type="submit" id="c-btn"value=" - "class=" cart-btn">
+                    </form>
+                    <div class="text-center  ">{{product|cart_quantity:request.session.cart}} in Cart</div>
+                    <form action="/cart/" class=" " method="post">
+                        {% csrf_token %}
+                        <input hidden type="text" name='product' value='{{product.id}}'>
+                        <input type="submit" id="c-btn" value=" + " class="cart-btn">
+                    </form></td>
                     <td>{{ product|price_total:request.session.cart }}€</td>
                 </tr>
                 {% endfor %}
@@ -59,6 +74,20 @@
         {% endif %}
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+	var cartButtons = document.querySelectorAll('.cart-btn');
 
-<!-- Modal -->
+	cartButtons.forEach(function(button) {
+		button.addEventListener('click', function() {
+			var customAlert = document.getElementById('custom-alert');
+			customAlert.style.display = 'block';
+	
+			setTimeout(function() {
+				customAlert.style.display = 'none';
+			}, 5000);
+		});
+	});
+</script>
+
 {% endblock %}
