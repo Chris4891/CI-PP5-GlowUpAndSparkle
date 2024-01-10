@@ -21,7 +21,7 @@
 			font-size: 14px;
 		}
 		.centered{
-			padding-top: 20px;
+			padding-top: 35px;
 		}
 	}
 	@media (max-width: 1395px) {
@@ -105,7 +105,7 @@
 	color: #fff;
 	max-width: calc(950px);
 	padding-bottom: 25px;
-	padding-top: 50px;
+	padding-top: 30px;
 }
 .btn-success{
 	background-color: #e48a41;
