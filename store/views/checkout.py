@@ -5,6 +5,7 @@ from django.urls import reverse
 from store.views.cart import Cart
 from store.models.orders import Products  # Import the Cart model
 
+from django.contrib.auth.models import User
 
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -127,7 +128,80 @@ def orderdetails(request):
     else:
         return render(request, 'orderdetails.html', {'error_message': error_message})
 
+def orderdetails_guest(request):
+    error_message = None
+    if request.method == 'POST':
+        # Get form data
+        fname = request.POST.get('fname')
+        lname = request.POST.get('lname')
+        email = request.POST.get('email')
+        address = request.POST.get('address')
+        phone = request.POST.get('phone')
+
+        # Check if the email already exists in the User model
+        customer = Customer(
+            first_name=fname,
+            last_name=lname,
+            email=email,
+            phone=phone
+            # Add other fields as needed
+        )
+        customer.register()
+        customer_id = customer.id
+        cart = request.session.get('cart')
+        products = Products.get_products_by_id(list(cart.keys()))
+        print(address, phone, customer_id, cart, products)
 
 
+        if not (address and phone ):
+            print("Form data is missing")
+            error_message = "All fields are required."
+            return render(request, 'orderdetails.html', {'error_message': error_message})
+
+        
+        if len (phone) < 10:
+            error_message = 'Phone Number must be 10 char Long'
+            return render(request, 'orderdetails.html', {'error_message': error_message})
+
+        else:
+            for product in products:
+                    print(cart.get(str(product.id)))
+                    order = Order(
+                                    customer=customer,
+                                    product=product,
+                                    price=product.price,
+                                    address=address,
+                                    phone=phone,
+                                    quantity=cart.get(str(product.id)))
+                    order.save()
+            context = {'email': customer.email}
+            email_content = "Thank You For Trusting Us And Order <br> Your order will arive Soom!"
+
+            email_subject = 'Order Placed'
+            recipient_list = [customer.email]
+            from_email = settings.EMAIL_HOST_USER
+
+            send_mail(
+                email_subject,
+                '',
+                from_email,
+                recipient_list,
+                html_message=email_content,
+                fail_silently=False
+            )
+
+            owner_email = settings.EMAIL_HOST_USER
+            send_mail(
+                "New Order Placed",
+                f"New order placed with details: {customer.first_name},{customer.last_name},\n,{address}, {phone}, {products}",  
+                from_email,
+                recipient_list=[owner_email],
+                fail_silently=False
+            )
+
+            request.session['cart'] = {}
+        return render(request, 'success.html', {'error_message': error_message})
+    else:
+        return render(request, 'orderdetails.html', {'error_message': error_message})
 
 
