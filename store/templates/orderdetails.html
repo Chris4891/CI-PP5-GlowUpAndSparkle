@@ -14,7 +14,7 @@
             <div class="" style="color: white !important;">
                 <div class="">
 
-                    <form action="{% if request.user.is_authenticated %}{% url 'orderdetails' %}{% else %}{% url 'orderdetails_guest' %}{% endif %}" method="POST">
+                    <form action="{% if request.session.customer %}{% url 'orderdetails' %}{% else %}{% url 'orderdetails_guest' %}{% endif %}" method="POST">
                         {% if error_message %}
                         <div class="alert alert-danger">
                             {{ error_message }}
