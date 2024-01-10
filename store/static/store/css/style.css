@@ -32,7 +32,12 @@
 			margin-right: 0 ;
 		}
 	}
-
+	.cart-btn{
+		border: 1px solid white !important;
+		width: -webkit-fill-available;
+		margin: 8px 0px;
+		background: none;
+	}
 	#heade-main{
 		background-image: linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) ),url('../images/banner5.jpg');
 		background-size:cover;
