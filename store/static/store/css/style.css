@@ -10,16 +10,7 @@
 		width: 100%;
 		text-transform: uppercase;
 	}
-	@media (max-width: 600px) {
-		body{
-			/* max-width: fit-content ; */
-			min-width: auto;
-			
-		}
-		.centered h1{
-			font-size: 30px !important;
-		}
-	}
+
 	#heade-main{
 		background-image: linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) ),url('../images/banner5.jpg');
 		background-size:cover;
