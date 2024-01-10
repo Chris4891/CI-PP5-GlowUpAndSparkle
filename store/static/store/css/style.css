@@ -11,6 +11,18 @@
 		text-transform: uppercase;
 	}
 
+	@media (max-width: 600px) {
+		.centered h1{
+			font-size: 25px !important;
+		}
+		.centered h3{
+			font-size: 14px;
+		}
+		.centered{
+			padding-top: 20px;
+		}
+	}
+
 	#heade-main{
 		background-image: linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) ),url('../images/banner5.jpg');
 		background-size:cover;
