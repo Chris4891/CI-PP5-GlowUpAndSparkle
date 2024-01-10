@@ -6,6 +6,12 @@
 {% load custom_filter %}
 <!-- body -->
 <div class="container-fluid shop mt-3">
+	<div id="custom-alert" class="alert " role="alert" style="display: none;">
+		ITEM ADDED/REMOVED FROM CART!
+	</div>
+	<div id="alert" class="alert alert" style="display: none;">
+        <span id="alert-message">ITEM ADDED/REMOVED TO CART SUCCESFULLY!</span>
+    </div>
 	<div class="container shop-b text-center">
 		<div class="store-title">
 			<ul class="list-inline store-tiles">
@@ -31,20 +37,16 @@
 						<!-- {{product | is_in_cart:request.session.cart }} -->
 					</div>
 				<div class="card-footer " style="font-size:15px">
-					{% comment %} <form action="/store/" method="POST">
-						{% csrf_token %}
-						<input hidden type="text" name='product' value='{{product.id}}'>
-						<input type="submit" style="font-size: 18px;" class="btn btn-success btn-block" value="Add To Cart">
-					</form> {% endcomment %}
+
 					{% if product|is_in_cart:request.session.cart %}
 						<div class="row cartbtn "style="display:flex; padding:5px;">
 							<form action="/store/" class="col " method="post">
 								{% csrf_token %}
 								<input hidden type="text" name='product' value='{{product.id}}'>
 								<input hidden type="text" name='remove' value='True'>
-								<input type="submit" value=" - "class="btn btn-block btn-success ">
+								<input type="submit" value=" - "class="cart-btn btn btn-block btn-success ">
 							</form>
-							<div style=" margin:0px 10px"class="text-center  btn btn-success">{{product|cart_quantity:request.session.cart}} in Cart</div>
+							<div style=" margin:0px 10px"class="cart-btn text-center  btn btn-success">{{product|cart_quantity:request.session.cart}} in Cart</div>
 							<form action="/store/" class=" " method="post">
 								{% csrf_token %}
 								<input hidden type="text" name='product' value='{{product.id}}'>
@@ -55,7 +57,7 @@
 						<form action="" method="POST" class="btn-block">
 							{% csrf_token %}
 							<input hidden type="text" name='product' value='{{product.id}}'>
-							<input type="submit" class="float-right btn btn-success form-control"
+							<input type="submit" class="float-right btn btn-success cart-btn form-control"
 								value="Add To Cart">
 						</form>
 						{% endif %}
@@ -68,22 +70,20 @@
 		</div>
 	</div>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+	var cartButtons = document.querySelectorAll('.btn-success');
 
-<style>
-@media (max-width: 600px) {
-	body{
-		max-width: fit-content ;		
-	}
-	.centered h1{
-		font-size: 25px !important;
-	}
-	.centered h3{
-		font-size: 14px;
-	}
-	.centered{
-		padding-top: 20px;
-	}
-}
-</style>
+	cartButtons.forEach(function(button) {
+		button.addEventListener('click', function() {
+			var customAlert = document.getElementById('custom-alert');
+			customAlert.style.display = 'block';
+	
+			setTimeout(function() {
+				customAlert.style.display = 'none';
+			}, 5000);
+		});
+	});
+</script>
 
 {% endblock %}
