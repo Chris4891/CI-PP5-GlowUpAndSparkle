@@ -8,6 +8,8 @@
 		letter-spacing: .15em;
 		min-width: fit-content;
 		width: 100%;
+		display: flex;
+		flex-direction:column;
 		text-transform: uppercase;
 	}
 
