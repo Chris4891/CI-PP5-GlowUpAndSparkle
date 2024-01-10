@@ -101,4 +101,18 @@
         </div>
     </div>
 </div>
+<script>
+	var cartButtons = document.querySelectorAll('.btn-success');
+
+	cartButtons.forEach(function(button) {
+		button.addEventListener('click', function() {
+			var customAlert = document.getElementById('custom-alert');
+			customAlert.style.display = 'block';
+	
+			setTimeout(function() {
+				customAlert.style.display = 'none';
+			}, 3000);
+		});
+	});
+</script>
     {% endblock %}
