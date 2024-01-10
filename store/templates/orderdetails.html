@@ -14,13 +14,25 @@
             <div class="" style="color: white !important;">
                 <div class="">
 
-                    <form action="{% url 'orderdetails' %}" method="POST">
+                    <form action="{% if request.user.is_authenticated %}{% url 'orderdetails' %}{% else %}{% url 'orderdetails_guest' %}{% endif %}" method="POST">
                         {% if error_message %}
                         <div class="alert alert-danger">
                             {{ error_message }}
                         </div>
                         {% endif %}
                         {% csrf_token %}
+                        <div class="form-group">
+                            <label style="text-align: left !important;">First Name</label>
+                            <input type="text" name="fname" id="" class="form-control" placeholder="" aria-describedby="helpId" />
+                        </div>
+                        <div class="form-group">
+                            <label style="text-align: left !important;">Last Name</label>
+                            <input type="text" name="lname" id="" class="form-control" placeholder="" aria-describedby="helpId" />
+                        </div>
+                        <div class="form-group">
+                            <label for="">Email</label>
+                            <input type="email" name="email" id="" class="form-control" placeholder="" aria-describedby="helpId" />
+                        </div>
                         <div class="form-group">
                             <label style="text-align: left !important;">Address</label>
                             <input type="text" name="address" id="" class="form-control" placeholder="" aria-describedby="helpId" />
