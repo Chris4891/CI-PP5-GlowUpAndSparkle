@@ -29,6 +29,7 @@ urlpatterns = [
     path('privacypolicy/', ppolicy.as_view() , name='privacypolicy'),
     path('orderdetails/', orderdetails , name='orderdetails'),
 
+    path('orderdetails-guest/', orderdetails_guest, name='orderdetails_guest'),
 
     path('signup', Signup.as_view(), name='signup'),
     path('login/', Login.as_view(), name='login'),
