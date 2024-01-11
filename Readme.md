@@ -1,4 +1,4 @@
-First Commit test# GLOW UP & SPARKLE
+# GLOW UP & SPARKLE
 (Developer: Kristijan Kolar)
 
 ![Mockup image](docs/responsive.png)
