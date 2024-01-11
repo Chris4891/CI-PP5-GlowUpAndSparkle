@@ -22,7 +22,6 @@
     4. [Database](#database)
     5. [Data Models](#data-models)
     6. [Wireframes](#wireframes)
-    7. [Agile Design](#agile-design)
 4. [Technologies Used](#technologies-used)
     1. [Languages & Frameworks](#languages--frameworks)
     2. [Libraries and Tools](#libraries--tools)
@@ -32,23 +31,18 @@
 7. [Validation](#validation)
     1. [CSS](#css)
     2. [Html](#html)
-    3. [Javascript](#javascript)
-    4. [Python](#python)
-    5. [Chrome Dev Tools Lighthouse](#lighthouse)
-    6. [WAVE Validation](#wave)
+
 8. [Testing](#testing)
 
-9. [Bugs](#bugs)
-
-10. [Deployment](#deployment)
+9. [Deployment](#deployment)
     1. [Heroku](#heroku)
     2. [Forking GitHub Repo](#forking-the-github-repository)
     3. [Clone a GitHub Repo](#clone-a-github-repository)
-12. [Credits](#credits)
+10. [Credits](#credits)
     1. [Code](#code)
     2. [Tutorials](#tutorials)
     3. [Imagery](#imagery)
-13. [Acknowledgements](#acknowledgements)
+11. [Acknowledgements](#acknowledgements)
 
 ## About
 
@@ -378,10 +372,6 @@ The Products model is defined with the following field:
 
 ![success html](docs/successTest.png)
 
-
-### Javascript
-
-### Python
 
 
 ## Deployment
