@@ -1,7 +1,7 @@
 First Commit test# GLOW UP & SPARKLE
 (Developer: Kristijan Kolar)
 
-![Mockup image](docs/am_i_responsive.png)
+![Mockup image](docs/responsive.png)
 
 
 [View live website](https://deploye-77587ca1458a.herokuapp.com/)
