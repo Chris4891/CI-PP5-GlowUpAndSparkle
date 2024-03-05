@@ -1,75 +1,94 @@
-
-  <!-- Footer template -->
+<!-- Footer template -->
 <div class="container-fluid footer">
-    <!-- Other footer content -->
-    <div class="subscribe container ">
-        <div class="row">
-            <div class="col-md-6 subscribe1 ">
-                <h3>SUBSCRIBE TO GET </h3>
-                <h3>OUR LATEST UPDATES</h3>
-            </div>
-            <div class="col-md-6 subscribe1 ">
-                <form id="newsletter-form"  method="POST">
-                    {% csrf_token %}
-                    <div style="width:460px" class="input-box">
-                        <input type="email" id="email" name="email" placeholder="Your email address" class="form-control">
-                        <button type="submit" id="email-btn">Sign Up</button>
-                    </div>
-                </form>
-                <!-- Add a container for displaying success or error messages -->
-                <div id="newsletter-messages"></div>
-            </div>
-        </div>
+  <!-- Other footer content -->
+  <div class="subscribe container">
+    <div class="row">
+      <div class="col-md-6 subscribe1">
+        <h3>SUBSCRIBE TO GET</h3>
+        <h3>OUR LATEST UPDATES</h3>
+      </div>
+      <div class="col-md-6 subscribe1">
+        <form id="newsletter-form" method="POST">
+          {% csrf_token %}
+          <div style="width:460px" class="input-box">
+            <input type="email" id="email" name="email" placeholder="Your email address" class="form-control" />
+            <button type="submit" id="email-btn">Sign Up</button>
+          </div>
+        </form>
+        <!-- Add a container for displaying success or error messages -->
+        <div id="newsletter-messages"></div>
+      </div>
     </div>
-    <!-- Other footer content -->
+  </div>
+  <!-- Other footer content -->
 
-        <div class="container">
-        <div class="row footer2">
-            <div class="col-md-3">
-                <h2>Glow Up & Sparkle </h2>
-                <br>
-                <ul class="list-inline social-icons">
-                    <li class="list-inline-item"><a href="https://www.facebook.com/profile.php?id=61555397613317" target="_blank"><i class="fa fa-brands fa-facebook"></i></a></li>
-                    <li class="list-inline-item"><a href="https://twitter.com"target="_blank"><i class="fa fa-brands fa-x-twitter"></i></a></li>
-                    <li class="list-inline-item"><a href="https://instagram.com"target="_blank"><i class="fa fa-brands fa-instagram"></i></a></li>
-                    <li class="list-inline-item"><a href="https://github.com/Chris4891/"target="_blank"><i class="fa fa-brands fa-github"></i></a></li>
-
-                </ul>
-            </div>
-            <div class="col-md-3">
-                <h2>NAVIGATIONS</h2>
-                <ul class="list">
-                    <li class="list-item"><a href="/">HOME</a></li>
-                    <li class="list-item"><a href="/store">STORE</a></li>
-                    <li class="list-item"><a href="/about">ABOUT</a></li>
-                    <li class="list-item"><a href="/contact">CONTACT</a></li>
-                    <li class="list-item"><a href="/cart">CART<i class="fa fa-shopping-cart"></i></a></li>
-
-                </ul>
-            </div>
-            <div class="col-md-3">
-                <h3>CONTACT</h3>
-                <ul class="list">
-                    <li class="list-item"><a href="tel:+353873671286"><i class="fa fa-phone">&nbsp</i>+353873671286</a></li>
-                    <li class="list-item"><a href="tel:+353873671286"><i class="fa fa-phone">&nbsp</i>+353873671286</a></li>
-                    <li class="list-item"><a href="mailto:glowupsparkle@gmail.com"><i class="fa fa-envelope">&nbsp</i>glowupsparkle@gmail.com</a></li>
-                </ul>
-            </div>
-            <div class="col-md-3">
-                <h3>ADDRESS</h3>
-                <ul class="list">
-                    <li class="list-item"><a href="https://maps.app.goo.gl/zjZch871UNf9EGcN9"><i class="fa fa-map-marker">&nbsp</i>11 Wilkin's court,Dublin 12, Ireland</a></li>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2384.516185191725!2d-6.181225522934198!3d53.29820127832431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x486708c19fc77925%3A0x8a638ebb0c562a25!2sBlackrock%20Business%20Park%2C%20Carysfort%20Ave%2C%20Newtown%20Blackrock%2C%20Blackrock%2C%20Co.%20Dublin%2C%20Ireland!5e0!3m2!1sen!2s!4v1704640504820!5m2!1sen!2s" width="300" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </ul>
-            </div>
-            
-
-        </div>
-        <div class="text footer-copyright">
-            © 2024 Copyrights by Chris4891 
-            <br><a href="/privacypolicy">Privacy Policy</a>
-        </div>
+  <div class="container">
+    <div class="row footer2">
+      <div class="col-md-3">
+        <h2>Glow Up & Sparkle</h2>
+        <br />
+        <ul class="list-inline social-icons">
+          <li class="list-inline-item">
+            <a href="https://www.facebook.com/profile.php?id=61555397613317" target="_blank"><i class="fa fa-brands fa-facebook"></i></a>
+          </li>
+          <li class="list-inline-item">
+            <a href="https://twitter.com" target="_blank"><i class="fa fa-brands fa-x-twitter"></i></a>
+          </li>
+          <li class="list-inline-item">
+            <a href="https://instagram.com" target="_blank"><i class="fa fa-brands fa-instagram"></i></a>
+          </li>
+          <li class="list-inline-item">
+            <a href="https://github.com/Chris4891/" target="_blank"><i class="fa fa-brands fa-github"></i></a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h2>NAVIGATIONS</h2>
+        <ul class="list">
+          <li class="list-item">
+            <a href="/">HOME</a>
+          </li>
+          <li class="list-item">
+            <a href="/store">STORE</a>
+          </li>
+          <li class="list-item">
+            <a href="/about">ABOUT</a>
+          </li>
+          <li class="list-item">
+            <a href="/contact">CONTACT</a>
+          </li>
+          <li class="list-item">
+            <a href="/cart">CART<i class="fa fa-shopping-cart"></i></a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h3>CONTACT</h3>
+        <ul class="list">
+          <li class="list-item">
+            <a href="tel:+353873671286"><i class="fa fa-phone">&nbsp</i>+353873671286</a>
+          </li>
+          <li class="list-item">
+            <a href="tel:+353873671286"><i class="fa fa-phone">&nbsp</i>+353873671286</a>
+          </li>
+          <li class="list-item">
+            <a href="mailto:glowupsparkle@gmail.com"><i class="fa fa-envelope">&nbsp</i>glowupsparkle@gmail.com</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h3>ADDRESS</h3>
+        <ul class="list">
+          <li class="list-item">
+            <a href="https://maps.app.goo.gl/zjZch871UNf9EGcN9"><i class="fa fa-map-marker">&nbsp</i>11 Wilkin's court,Dublin 12, Ireland</a>
+          </li>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2384.516185191725!2d-6.181225522934198!3d53.29820127832431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x486708c19fc77925%3A0x8a638ebb0c562a25!2sBlackrock%20Business%20Park%2C%20Carysfort%20Ave%2C%20Newtown%20Blackrock%2C%20Blackrock%2C%20Co.%20Dublin%2C%20Ireland!5e0!3m2!1sen!2s!4v1704640504820!5m2!1sen!2s" width="300" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </ul>
+      </div>
     </div>
-    
+    <div class="text footer-copyright">
+      © 2024 Copyrights by Chris4891
+      <br /><a href="/privacypolicy">Privacy Policy</a>
     </div>
-
+  </div>
+</div>

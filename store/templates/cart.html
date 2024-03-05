@@ -3,91 +3,94 @@
 {% load cart %}
 
 {% block header %}
-
-<div class="shop" style="padding:0px;">
-    <div class="headerpad container ">
-        {% include "navbar.html" %}
+  <div class="shop" style="padding:0px;">
+    <div class="headerpad container">
+      {% include 'navbar.html' %}
     </div>
+  </div>
 {% endblock %}
 
 {% block content %}
-<div class="container shop-b">
-    <div id="custom-alert" class="alert " role="alert" style="display: none;">
-        ITEM ADDED/REMOVED FROM CART!
-    </div>
-    <div class="border fadeInleft rounded p-4 m-4">
-        <h2>Your Cart <i class="fa  orange fa-shopping-cart"></i></h2>
+  <div class="container-fluid shop">
+    <div class="container shop-b">
+      <div id="custom-alert" class="alert" role="alert" style="display: none;">ITEM ADDED/REMOVED FROM CART!</div>
+      <div class="border fadeInleft rounded p-4 m-4">
+        <h2>Your Cart <i class="fa orange fa-shopping-cart"></i></h2>
         <hr />
         {% if products %}
-        <table class="table">
+          <table class="table">
             <thead>
-                <tr>
-                    <th>Sno.</th>
-                    <th>Image</th>
-                    <th>Product</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Total</th>
-                </tr>
+              <tr>
+                <th>Sno.</th>
+                <th>Image</th>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+              </tr>
             </thead>
             <tbody>
-                {% for product in products %}
+              {% for product in products %}
                 <tr>
-                    <td>{{ forloop.counter }}</td>
-                    <td>
-                        <img style="height: 80px;" class="rounded-circle" src="{{ product.image.url }}" alt="" />
-                    </td>
-                    <td>{{ product.name }}</td>
-                    <td>{{ product.price }}€</td>
-                    <td><form action="/cart/" class="col " method="post">
-                        {% csrf_token %}
-                        <input hidden type="text" name='product' value='{{product.id}}'>
-                        <input hidden type="text" name='remove' value='True'>
-                        <input type="submit" id="c-btn"value=" - "class=" cart-btn">
+                  <td>{{ forloop.counter }}</td>
+                  <td>
+                    <img style="height: 80px;" class="rounded-circle" src="{{ product.image.url }}" alt="" />
+                  </td>
+                  <td>{{ product.name }}</td>
+                  <td>{{ product.price }}€</td>
+                  <td>
+                    <form action="/cart/" class="col" method="post">
+                      {% csrf_token %}
+                      <input hidden type="text" name="product" value="{{ product.id }}" />
+                      <input hidden type="text" name="remove" value="True" />
+                      <input type="submit" id="c-btn" value=" - " class="cart-btn" />
                     </form>
-                    <div class="text-center  ">{{product|cart_quantity:request.session.cart}} in Cart</div>
-                    <form action="/cart/" class=" " method="post">
-                        {% csrf_token %}
-                        <input hidden type="text" name='product' value='{{product.id}}'>
-                        <input type="submit" id="c-btn" value=" + " class="cart-btn">
-                    </form></td>
-                    <td>{{ product|price_total:request.session.cart }}€</td>
+                    <div class="text-center">{{ product|cart_quantity:request.session.cart }} in Cart</div>
+                    <form action="/cart/" class="" method="post">
+                      {% csrf_token %}
+                      <input hidden type="text" name="product" value="{{ product.id }}" />
+                      <input type="submit" id="c-btn" value=" + " class="cart-btn" />
+                    </form>
+                  </td>
+                  <td>{{ product|price_total:request.session.cart }}€</td>
                 </tr>
-                {% endfor %}
+              {% endfor %}
             </tbody>
 
             <tfoot>
-                <tr>
-                    <th colspan="4"></th>
-                    <th class="" colspan="">Total</th>
-                    <th>{{ products|total_cart_price:request.session.cart }}€</th>
-                </tr>
+              <tr>
+                <th colspan="4"></th>
+                <th class="" colspan="">Total</th>
+                <th>{{ products|total_cart_price:request.session.cart }}€</th>
+              </tr>
             </tfoot>
-        </table>
-        <hr />
-        <div class="m-3 p-3">
+          </table>
+          <hr />
+          <div class="m-3 p-3">
             <a href="/checkout" data-toggle="" data-target="#" class="btn product-btn">Proceed To Payment</a>
-        </div>
+          </div>
         {% else %}
-        <p style="font-size:25px;">Your cart is empty.<i class="fa fa-shopping-cart"></i></p>
-		<button onclick="window.location.href='/store'" class="product-btn">VISIT STORE</button>
+          <p style="font-size:25px;">
+            Your cart is empty.<i class="fa fa-shopping-cart"></i>
+          </p>
+          <button onclick="window.location.href='/store'" class="product-btn">VISIT STORE</button>
         {% endif %}
+      </div>
     </div>
-</div>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-	var cartButtons = document.querySelectorAll('.cart-btn');
-
-	cartButtons.forEach(function(button) {
-		button.addEventListener('click', function() {
-			var customAlert = document.getElementById('custom-alert');
-			customAlert.style.display = 'block';
-	
-			setTimeout(function() {
-				customAlert.style.display = 'none';
-			}, 5000);
-		});
-	});
-</script>
-
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    var cartButtons = document.querySelectorAll('.cart-btn')
+    
+    cartButtons.forEach(function (button) {
+      button.addEventListener('click', function () {
+        var customAlert = document.getElementById('custom-alert')
+        customAlert.style.display = 'block'
+    
+        setTimeout(function () {
+          customAlert.style.display = 'none'
+        }, 5000)
+      })
+    })
+  </script>
 {% endblock %}

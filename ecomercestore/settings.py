@@ -14,7 +14,7 @@ from pathlib import Path
 import os
 import django_heroku
 import dj_database_url
-
+from .config import SECRET_KEY,STRIPE_WEBHOOK_SECRET,STRIPE_PUBLIC_KEY,STRIPE_SECRET_KEY,EMAIL_HOST_PASSWORD
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -23,23 +23,28 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '-95t%=#4o3@l-(-%ok9*h%n3!0(sdchjn%+_$5#umaj-!3bg*7'
+import os
+
+SECRET_KEY = SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
+ALLOWED_HOSTS = ['deploye-77587ca1458a.herokuapp.com']
 
-ALLOWED_HOSTS = ['*']
 
 # Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
+    'django_heroku',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'store',
+    'storages',
+
     ]
 
 MIDDLEWARE = [
@@ -81,20 +86,20 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 ...
 DATABASES = {'default': dj_database_url.config()}
 
-from decouple import config
+#from decouple import config
 ...
 DATABASES = {
     "default": {
-        # default sqlite3 settings
-        #  "ENGINE": "django.db.backends.sqlite3",
-        # "NAME": os.path.join(BASE_DIR, 'db.sqlite3')
-        # Postgresql settings
-       'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd3cgnfjld6uli2',
-        'USER': 'hbqfucyeulbyfk',
-        'PASSWORD': 'd3e82675fb53c0e8381ca6be23883747c655bcaccb8c89639a5dea7a1546d39a',
-        'HOST': 'ec2-52-1-92-133.compute-1.amazonaws.com',
-        'PORT': '5432',
+        #default sqlite3 settings
+         "ENGINE": "django.db.backends.sqlite3",
+        "NAME": os.path.join(BASE_DIR, 'db.sqlite3')
+        #Postgresql settings
+    #    'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #     'NAME': 'd3cgnfjld6uli2',
+    #     'USER': 'hbqfucyeulbyfk',
+    #     'PASSWORD': 'd3e82675fb53c0e8381ca6be23883747c655bcaccb8c89639a5dea7a1546d39a',
+    #     'HOST': 'ec2-52-1-92-133.compute-1.amazonaws.com',
+    #     'PORT': '5432',
     }
 }
 
@@ -137,26 +142,50 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-MEDIA_URL = "/images/"
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-MEDIA_ROOT = BASE_DIR
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+if 'USE_AWS' in os.environ:
+    # Cache control
+    AWS_S3_OBJECT_PARAMETERS = {
+        'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
+        'CacheControl': 'max-age=94608000',
+    }
+
+    # Bucket config
+    AWS_STORAGE_BUCKET_NAME = 'ci-pp5-glowupsparkle'
+    AWS_S3_REGION_NAME = 'eu-west-3'
+    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+
+    # static and media files
+    STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+    STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+    STATICFILES_LOCATION = 'static'
+    DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+    MEDIAFILES_LOCATION = 'media'
+
+    # Override static and media URLs in production
+    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
+    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
+
 # settings.py
 
-STRIPE_PUBLIC_KEY = 'pk_test_51OLt1nGOc784mioAOheKKqxTAyx9N7yRSFrvTgX8zjeZQsffq92HsSsGOn0RNxwN5jRkzL9sjIPQJfPhNimcahi5007reIN2in'
-STRIPE_SECRET_KEY = 'sk_test_51OLt1nGOc784mioA8Go0G94PUKNTXvzaJc3gZtKhtHNnnTDBaGoyDBnf1v62Lb1i9zlswSuF7ykuwzVfsq2O2Jc500L0VOEV77'
-
-
-# settings.py
-# settings.py
+STRIPE_PUBLIC_KEY = STRIPE_PUBLIC_KEY
+STRIPE_SECRET_KEY = STRIPE_SECRET_KEY
+STRIPE_WEBHOOK_SECRET =STRIPE_WEBHOOK_SECRET
 
 # Email configuration
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587  # For TLS
 EMAIL_USE_TLS = True
-EMAIL_USE_SSL = False  # Set to False for TLS
-EMAIL_HOST_USER = 'glowupsparkle@gmail.com'  # Your Gmail email address
-EMAIL_HOST_PASSWORD = 'ajakumtrcqflqrrx'  # Your Gmail password or app-specific password
+EMAIL_USE_SSL = False  
+EMAIL_HOST_USER = 'glowupsparkle@gmail.com'
+EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD
 
 django_heroku.settings(locals())
+

@@ -1,19 +1,23 @@
 {% extends 'base.html' %}
 {% block header %}
-<div class="shop" style="padding:0px;">
-    <div class="headerpad container ">
-        {% include "navbar.html" %}
+  <div class="shop" style="padding:0px;">
+    <div class="headerpad container">
+      {% include 'navbar.html' %}
     </div>
+  </div>
 {% endblock %}
 
 {% block content %}
-<div class="container shop-b">
-        <div class=" respo">
-        <div class=""><i class="icon fa fa-envelope"></i></div>
-        <h1>Thanks for Shopping! </h1>
-        <p class="thank-you">Your Order Will reach you soon </p>
-        <button style="margin:2px;margin-top:8px; padding:10px 20px;" class="centered-button"onclick="window.location.href='/store'"> Do More Shopping</button>
+  <div class="container-fluid shop">
+    <div class="container shop-b">
+      <div class="respo">
+        <div class="">
+          <i class="icon fa fa-envelope"></i>
+        </div>
+        <h1>Thanks for Shopping!</h1>
+        <p class="thank-you">Your Order Will reach you soon</p>
+        <button style="margin:2px;margin-top:8px; padding:10px 20px;" class="centered-button" onclick="window.location.href='/store'">Do More Shopping</button>
+      </div>
     </div>
-</div>
-
+  </div>
 {% endblock %}

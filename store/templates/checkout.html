@@ -1,15 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Checkout</title>
-</head>
-<body>
-    
-    <form action="{% url 'create_checkout_session' %}" method="POST">
+  </head>
+  <body>
+      <form action="{% url 'create_checkout_session' %}" method="post">
         {% csrf_token %}
+        <label for="customer_name">Name:</label>
+        <input type="text" id="customer_name" name="customer_name"><br><br>
         
+        <label for="customer_phone">Phone:</label>
+        <input type="text" id="customer_phone" name="customer_phone"><br><br>
+        
+        <label for="customer_address">Address:</label>
+        <textarea id="customer_address" name="customer_address"></textarea><br><br>
+    
+        <!-- Add other form fields as needed for your application -->
+        
+        <button type="submit">Checkout</button>
     </form>
-</body>
+    
+    </form>
+    </form>
+  </body>
 </html>
