@@ -12,6 +12,7 @@ from .views.contact import  contact_page,response
 from .views.about import About
 from .views.ppolicy import ppolicy
 from .views.newsletter import Newsletter
+from .views.handler404  import Handler404
 from .views.productdetail import ProductDetailView
 from django.conf import settings
 from django.conf.urls.static import static
@@ -45,3 +46,4 @@ urlpatterns = [
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
+handler404 = Handler404

@@ -55,3 +55,8 @@ class Index(View):
         print('you are : ', request.session.get('email'))
         
         return render(request, 'index.html', data)
+    
+    from django.shortcuts import render
+
+def handler404(request, exception):
+    return render(request, '404.html', status=404)

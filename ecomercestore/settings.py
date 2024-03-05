@@ -54,11 +54,11 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'ecomercestore.urls'
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -86,15 +86,15 @@ from decouple import config
 DATABASES = {
     "default": {
         # default sqlite3 settings
-        #  "ENGINE": "django.db.backends.sqlite3",
-        # "NAME": os.path.join(BASE_DIR, 'db.sqlite3')
+         "ENGINE": "django.db.backends.sqlite3",
+        "NAME": os.path.join(BASE_DIR, 'db.sqlite3')
         # Postgresql settings
-       'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd3cgnfjld6uli2',
-        'USER': 'hbqfucyeulbyfk',
-        'PASSWORD': 'd3e82675fb53c0e8381ca6be23883747c655bcaccb8c89639a5dea7a1546d39a',
-        'HOST': 'ec2-52-1-92-133.compute-1.amazonaws.com',
-        'PORT': '5432',
+    #    'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #     'NAME': 'd3cgnfjld6uli2',
+    #     'USER': 'hbqfucyeulbyfk',
+    #     'PASSWORD': 'd3e82675fb53c0e8381ca6be23883747c655bcaccb8c89639a5dea7a1546d39a',
+    #     'HOST': 'ec2-52-1-92-133.compute-1.amazonaws.com',
+    #     'PORT': '5432',
     }
 }
 
