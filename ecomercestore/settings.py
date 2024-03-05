@@ -59,11 +59,11 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'ecomercestore.urls'
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -90,10 +90,17 @@ DATABASES = {'default': dj_database_url.config()}
 ...
 DATABASES = {
     "default": {
+<<<<<<< HEAD
         #default sqlite3 settings
          "ENGINE": "django.db.backends.sqlite3",
         "NAME": os.path.join(BASE_DIR, 'db.sqlite3')
         #Postgresql settings
+=======
+        # default sqlite3 settings
+         "ENGINE": "django.db.backends.sqlite3",
+        "NAME": os.path.join(BASE_DIR, 'db.sqlite3')
+        # Postgresql settings
+>>>>>>> 014e377db353d5833f2436a5d683e32636916689
     #    'ENGINE': 'django.db.backends.postgresql_psycopg2',
     #     'NAME': 'd3cgnfjld6uli2',
     #     'USER': 'hbqfucyeulbyfk',
