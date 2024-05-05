@@ -90,24 +90,9 @@ DATABASES = {'default': dj_database_url.config()}
 ...
 DATABASES = {
     "default": {
-<<<<<<< HEAD
         #default sqlite3 settings
          "ENGINE": "django.db.backends.sqlite3",
         "NAME": os.path.join(BASE_DIR, 'db.sqlite3')
-        #Postgresql settings
-=======
-        # default sqlite3 settings
-         "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, 'db.sqlite3')
-        # Postgresql settings
->>>>>>> 014e377db353d5833f2436a5d683e32636916689
-    #    'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    #     'NAME': 'd3cgnfjld6uli2',
-    #     'USER': 'hbqfucyeulbyfk',
-    #     'PASSWORD': 'd3e82675fb53c0e8381ca6be23883747c655bcaccb8c89639a5dea7a1546d39a',
-    #     'HOST': 'ec2-52-1-92-133.compute-1.amazonaws.com',
-    #     'PORT': '5432',
-    }
 }
 
 
