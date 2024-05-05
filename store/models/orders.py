@@ -3,6 +3,7 @@ from .product import Products
 from .customer import Customer
 import datetime
 
+#Order model
 
 class Order(models.Model):
     product = models.ForeignKey(Products,
